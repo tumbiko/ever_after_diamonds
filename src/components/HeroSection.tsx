@@ -213,7 +213,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               onClick={onBespokeClick}
               className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all"
             >
-              About
+              Book Appointment
             </button>
 
 
