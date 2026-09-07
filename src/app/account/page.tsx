@@ -21,7 +21,9 @@ import {
   Mail, 
   Building, 
   Heart,
-  Check
+  Check,
+  Menu,
+  X
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { CustomerProfile, CustomerAddress, CustomerPaymentCard } from '@/types';
@@ -32,6 +34,7 @@ const profileBadgeImgSrc = typeof profileBadgeImg === 'string' ? profileBadgeImg
 export default function CustomerAccountPage() {
   const [activeTab, setActiveTab] = useState<'profile' | 'addresses' | 'cards' | 'orders' | 'appointments'>('profile');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // 1. Profile State
   const [profile, setProfile] = useState<CustomerProfile>({
@@ -300,8 +303,11 @@ export default function CustomerAccountPage() {
           </Link>
 
           {/* Action Toolbar */}
-          <div className="flex items-center gap-2 sm:gap-3 text-xs">
-            <ThemeToggle variant="pill" />
+          <div className="flex items-center gap-1.5 sm:gap-3 text-xs shrink-0">
+            {/* Theme Toggle: Shown on desktop (md+) */}
+            <div className="hidden md:flex items-center">
+              <ThemeToggle variant="pill" />
+            </div>
 
             <Link
               href="/admin"
@@ -318,9 +324,50 @@ export default function CustomerAccountPage() {
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Storefront</span>
             </Link>
+
+            {/* Mobile Hamburger Drawer Trigger */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-[#1C1917] dark:text-[#F5F2EB] hover:bg-[#F5F2EB] dark:hover:bg-[#2A241E] rounded-full border border-[#E0D8CB] dark:border-[#3D352E] transition-colors"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
           </div>
 
         </div>
+
+        {/* Mobile Slide-Out Drawer / Sidebar */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-[#FAF9F5] dark:bg-[#1C1917] border-t border-[#EAE4DA] dark:border-[#332E2A] px-4 py-3 mt-3 space-y-3 shadow-md animate-in slide-in-from-top-2">
+            <div className="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-[#211E1A] border border-[#E5DFD5] dark:border-[#3D352E]">
+              <span className="text-xs font-bold text-[#8C5B32] dark:text-[#D4AF37] uppercase tracking-wider">
+                Theme Appearance
+              </span>
+              <ThemeToggle variant="pill" />
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <Link
+                href="/admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2.5 rounded-xl bg-[#F5F2EB] dark:bg-[#211E1A] border border-[#E0D8CB] dark:border-[#3D352E] text-[#57534E] dark:text-[#EADDCB] font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-xs"
+              >
+                <Building className="w-4 h-4 text-[#8C5B32] dark:text-[#D4AF37]" />
+                <span>Admin Portal</span>
+              </Link>
+
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2.5 rounded-xl bg-[#B28359] dark:bg-[#D4AF37] text-white dark:text-[#141210] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-xs"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Storefront</span>
+              </Link>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* CLIENT BANNER HERO */}
