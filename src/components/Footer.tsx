@@ -126,8 +126,9 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
-                <button onClick={onOpenDiamondGuide} className="hover:text-[#0284C7] dark:hover:text-[#38BDF8] transition-colors">
-                  The 4Cs Diamond Guide
+                <button onClick={onOpenDiamondGuide} className="text-[#0284C7] dark:text-[#38BDF8] hover:underline transition-colors flex items-center gap-1.5 font-bold">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>The 4Cs Diamond Education</span>
                 </button>
               </li>
               <li className="pt-2 border-t border-[#E5DFD5] dark:border-[#2D2720]">
