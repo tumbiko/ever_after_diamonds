@@ -43,29 +43,35 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Badges: Champagne Gold for Bestseller, Sky Blue for Certification */}
-      <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 pointer-events-none">
-        {product.isBestseller && (
-          <span className="px-2.5 py-1 rounded-full bg-[#B28359] dark:bg-[#D4AF37] text-white dark:text-[#141210] text-xs font-bold uppercase tracking-wider shadow-sm">
-            Bestseller
+      {/* Top Card Badges Bar - Bounded & Collision-Free */}
+      <div className="absolute top-2.5 left-2.5 right-2.5 z-10 flex items-start justify-between gap-1.5 pointer-events-none">
+        
+        {/* Left Stacked Status Badges */}
+        <div className="flex flex-col items-start gap-1 max-w-[60%] sm:max-w-[65%]">
+          {product.isBestseller && (
+            <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-[#B28359] dark:bg-[#D4AF37] text-white dark:text-[#141210] text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm truncate max-w-full">
+              Bestseller
+            </span>
+          )}
+          {product.isNew && (
+            <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-white/95 dark:bg-[#211E1A]/95 border border-[#E5DFD5] dark:border-[#3D352E] text-[#1C1917] dark:text-[#F5F2EB] text-[10px] sm:text-xs font-semibold uppercase tracking-wider backdrop-blur-md shadow-xs truncate max-w-full">
+              New Creation
+            </span>
+          )}
+          {/* Sky Blue Optical Certification Badge */}
+          <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-[#F0F9FF]/95 dark:bg-[#0C4A6E]/95 border border-[#BAE6FD] dark:border-[#0284C7] text-[#0284C7] dark:text-[#38BDF8] text-[10px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md flex items-center gap-1 shadow-xs truncate max-w-full">
+            <Sparkles className="w-3 h-3 text-[#0284C7] dark:text-[#38BDF8] shrink-0" />
+            <span className="truncate">{product.certification.split('&')[0].trim()}</span>
           </span>
-        )}
-        {product.isNew && (
-          <span className="px-2.5 py-1 rounded-full bg-white/95 dark:bg-[#211E1A]/95 border border-[#E5DFD5] dark:border-[#3D352E] text-[#1C1917] dark:text-[#F5F2EB] text-xs font-semibold uppercase tracking-wider backdrop-blur-md shadow-xs">
-            New Creation
-          </span>
-        )}
-        {/* Sky Blue Optical Certification Badge */}
-        <span className="px-2.5 py-1 rounded-full bg-[#F0F9FF]/95 dark:bg-[#0C4A6E]/95 border border-[#BAE6FD] dark:border-[#0284C7] text-[#0284C7] dark:text-[#38BDF8] text-xs font-bold uppercase tracking-wider backdrop-blur-md flex items-center gap-1 shadow-xs">
-          <Sparkles className="w-3 h-3 text-[#0284C7] dark:text-[#38BDF8]" />
-          <span>{product.certification.split('&')[0].trim()}</span>
-        </span>
-      </div>
+        </div>
 
-      <div className="absolute top-3 right-3 z-10 pointer-events-none">
-        <span className="px-2.5 py-1 rounded-full bg-white/90 dark:bg-[#211E1A]/90 backdrop-blur-md border border-[#E5DFD5] dark:border-[#3D352E] text-xs text-[#57534E] dark:text-[#D4CEC4] tracking-wider uppercase font-medium shadow-xs">
-          {product.diamondShape} Cut
-        </span>
+        {/* Right Diamond Cut Badge */}
+        <div className="shrink-0 max-w-[40%] text-right">
+          <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-white/90 dark:bg-[#211E1A]/90 backdrop-blur-md border border-[#E5DFD5] dark:border-[#3D352E] text-[10px] sm:text-xs text-[#57534E] dark:text-[#D4CEC4] tracking-wider uppercase font-medium shadow-xs truncate block max-w-full">
+            {product.diamondShape} Cut
+          </span>
+        </div>
+
       </div>
 
       {/* Image Gallery Container */}
