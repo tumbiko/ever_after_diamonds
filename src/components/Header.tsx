@@ -125,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({
           className="lg:hidden p-2 text-[#1C1917] dark:text-[#F5F2EB] hover:text-[#B28359] transition-colors rounded-full hover:bg-[#F5F1E9] dark:hover:bg-[#24201D] shrink-0"
           aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
         </button>
 
         {/* Brand Logo & Name */}
@@ -162,15 +162,15 @@ export const Header: React.FC<HeaderProps> = ({
             className="hidden md:flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs sm:text-sm uppercase tracking-wider font-semibold text-[#1C1917] dark:text-[#F5F2EB] hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] border border-[#E5DFD5] dark:border-[#3D352E] bg-[#FAF9F5] dark:bg-[#181614] shrink-0"
             title="Return to Home Page"
           >
-            <Home className="w-4 h-4 text-[#8C5B32] dark:text-[#D4AF37]" />
+            <Home className="w-4.5 h-4.5 text-[#8C5B32] dark:text-[#D4AF37]" />
             <span>Home</span>
           </button>
         )}
 
-        {/* CENTER PROMINENT SEARCH BAR - INCREASED HEIGHT & FONT */}
-        <div className="flex-1 max-w-xl mx-1 sm:mx-3 relative">
+        {/* CENTER PROMINENT SEARCH BAR - WIDER CONTAINER & ENLARGED ICON */}
+        <div className="flex-1 max-w-3xl mx-1 sm:mx-4 relative">
           <div className="relative flex items-center bg-[#FAF9F5] dark:bg-[#181614] border border-[#DED7CB] dark:border-[#3A332B] focus-within:border-[#B28359] dark:focus-within:border-[#D4AF37] focus-within:bg-white dark:focus-within:bg-[#211E1A] rounded-full transition-all shadow-inner px-4 py-2 sm:py-2.5">
-            <Search className="w-5 h-5 text-[#B28359] dark:text-[#D4AF37] mr-2 shrink-0" />
+            <Search className="w-5.5 h-5.5 text-[#B28359] dark:text-[#D4AF37] mr-2.5 shrink-0" />
             <input
               type="text"
               placeholder="Search rings, diamonds, fine jewelry..."
@@ -198,28 +198,6 @@ export const Header: React.FC<HeaderProps> = ({
             <ThemeToggle variant="toggle" />
           </div>
 
-          {/* Diamond 4Cs Education Guide */}
-          <button
-            onClick={onOpenDiamondGuide}
-            className="p-2 text-[#57534E] dark:text-[#D4CEC4] hover:text-[#0284C7] dark:hover:text-[#38BDF8] transition-colors rounded-full hover:bg-[#F0F9FF] dark:hover:bg-[#1E293B] hidden lg:flex items-center gap-1.5"
-            title="The 4Cs Diamond Education"
-          >
-            <Sparkles className="w-4.5 h-4.5 text-[#0284C7] dark:text-[#38BDF8]" />
-            <span className="hidden xl:inline text-xs sm:text-sm uppercase tracking-wider font-semibold">4Cs</span>
-          </button>
-
-          {/* My Account & Profile Link */}
-          <Link
-            href="/account"
-            className="p-2 sm:px-3 text-[#57534E] dark:text-[#D4CEC4] hover:text-[#B28359] dark:hover:text-[#D4AF37] transition-colors rounded-full hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] flex items-center gap-1.5"
-            title="Customer Account & Profile"
-          >
-            <User className="w-5 h-5 text-[#B28359] dark:text-[#D4AF37]" />
-            <span className="hidden md:inline text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1C1917] dark:text-[#F5F2EB]">
-              Account
-            </span>
-          </Link>
-
           {/* Book Consultation Button */}
           <button
             id="book-consultation-btn"
@@ -229,26 +207,32 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Book Viewing</span>
           </button>
 
-          {/* Shopping Bag / Cart Drawer Button: Always visible on small screens and large screens */}
+          {/* Shopping Bag / Cart Drawer Button */}
           <button
             id="cart-drawer-btn"
             onClick={onOpenCart}
-            className="relative p-2 sm:px-3 text-[#1C1917] dark:text-[#F5F2EB] hover:text-[#B28359] dark:hover:text-[#D4AF37] transition-colors rounded-full hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] flex items-center gap-1.5"
+            className="relative p-2 sm:p-2.5 text-[#1C1917] dark:text-[#F5F2EB] hover:text-[#B28359] dark:hover:text-[#D4AF37] transition-colors rounded-full hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] flex items-center justify-center"
             aria-label="Shopping Bag"
             title="Shopping Cart"
           >
             <div className="relative">
-              <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 text-[#1C1917] dark:text-[#F5F2EB]" />
+              <ShoppingBag className="w-6 h-6 sm:w-7 sm:h-7 text-[#1C1917] dark:text-[#F5F2EB]" />
               {cartCount > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-[#0284C7] dark:bg-[#38BDF8] text-white dark:text-[#0F172A] text-[10px] sm:text-xs font-bold flex items-center justify-center shadow-xs">
                   {cartCount}
                 </span>
               )}
             </div>
-            <span className="hidden xl:inline text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1C1917] dark:text-[#F5F2EB]">
-              Bag
-            </span>
           </button>
+
+          {/* My Account & Profile Link - Clean Icon on Far Right */}
+          <Link
+            href="/account"
+            className="p-2 sm:p-2.5 text-[#57534E] dark:text-[#D4CEC4] hover:text-[#B28359] dark:hover:text-[#D4AF37] transition-colors rounded-full hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] flex items-center justify-center"
+            title="Customer Account & Profile"
+          >
+            <User className="w-6 h-6 sm:w-6.5 sm:h-6.5 text-[#B28359] dark:text-[#D4AF37]" />
+          </Link>
 
         </div>
       </div>
@@ -334,16 +318,6 @@ export const Header: React.FC<HeaderProps> = ({
               <span>My Account & Profile</span>
             </Link>
 
-            <button
-              onClick={() => {
-                onOpenDiamondGuide();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 text-xs uppercase tracking-wider text-[#57534E] dark:text-[#D4CEC4] hover:text-[#0284C7] dark:hover:text-[#38BDF8] flex items-center gap-1.5"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#0284C7] dark:text-[#38BDF8]" />
-              <span>The 4Cs Diamond Education</span>
-            </button>
 
             <button
               onClick={() => {

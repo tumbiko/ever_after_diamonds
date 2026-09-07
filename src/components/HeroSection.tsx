@@ -200,41 +200,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <ArrowUpRight className="w-4 h-4 text-[#B28359] dark:text-[#D4AF37]" />
             </button>
 
-            {/* Inline Search Bar */}
-            {isSearchActive ? (
-              <div className="flex items-center gap-2 bg-white dark:bg-[#211E1A] border border-[#CFD5DE] dark:border-[#3D352E] rounded-full px-3.5 py-1.5 shadow-xs animate-in fade-in">
-                <Search className="w-4 h-4 text-[#0284C7] dark:text-[#38BDF8]" />
-                <input
-                  type="text"
-                  placeholder="Search rings..."
-                  value={searchQuery}
-                  onChange={(e) => onSearchChange?.(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      triggerShop();
-                    }
-                  }}
-                  autoFocus
-                  className="bg-transparent text-xs sm:text-sm text-black dark:text-[#F5F2EB] focus:outline-none w-32 sm:w-48 placeholder-[#9CA3AF]"
-                />
-                <button
-                  onClick={() => {
-                    setIsSearchActive(false);
-                    onSearchChange?.('');
-                  }}
-                  className="text-[#9CA3AF] hover:text-black dark:hover:text-white text-xs"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ) : (
-              <button 
-                onClick={() => setIsSearchActive(true)}
-                className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all"
-              >
-                Search
-              </button>
-            )}
+
 
             <button 
               onClick={triggerShop}
@@ -247,18 +213,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               onClick={onBespokeClick}
               className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all"
             >
-              About
+              Book Appointment
             </button>
 
-            {onOpenDiamondGuide && (
-              <button
-                onClick={onOpenDiamondGuide}
-                className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-[#0284C7] dark:hover:text-[#38BDF8] font-semibold text-xs sm:text-sm transition-all hidden md:inline-flex items-center gap-1.5"
-              >
-                <Sparkles className="w-4 h-4 text-[#0284C7] dark:text-[#38BDF8]" />
-                <span>4Cs Guide</span>
-              </button>
-            )}
+
           </nav>
 
           {/* Right Navigation Items */}
