@@ -12,7 +12,8 @@ import {
   MessageCircle,
   Award,
   Truck,
-  Lock
+  Lock,
+  Coins
 } from 'lucide-react';
 import profileBadgeImg from '../assets/images/ead_profile_badge_1788549227010.jpg';
 
@@ -130,6 +131,12 @@ export const Footer: React.FC<FooterProps> = ({
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>The 4Cs Diamond Education</span>
                 </button>
+              </li>
+              <li>
+                <Link href="/gold" className="text-[#8C5B32] dark:text-[#D4AF37] hover:underline transition-colors flex items-center gap-1.5 font-bold">
+                  <Coins className="w-3.5 h-3.5" />
+                  <span>We Buy Gold & Scrap Metals</span>
+                </Link>
               </li>
               <li className="pt-2 border-t border-[#E5DFD5] dark:border-[#2D2720]">
                 <Link href="/admin" className="text-[#8C5B32] dark:text-[#D4AF37] hover:underline font-bold flex items-center gap-1.5">

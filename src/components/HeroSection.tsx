@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   ChevronLeft,
   ChevronRight,
@@ -8,9 +9,14 @@ import {
   Search,
   X,
   Sparkles,
-  User
+  User,
+  Coins,
+  Menu,
+  Home,
+  ShoppingBag
 } from 'lucide-react';
 import { Product } from '../types';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 // Default luxury assets
 import heroModelDefault from '../assets/images/hero_model_portrait_1788678812463.jpg';
@@ -90,6 +96,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onSearchChange
 }) => {
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Safe fallback to explore
   const triggerShop = onGoShop || onExploreClick;
@@ -179,11 +186,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </svg>
         </div>
 
-        {/* TOP EDITORIAL NAVIGATION BAR */}
+        {/* ============================================================ */}
+        {/* TOP EDITORIAL NAVIGATION BAR                                  */}
+        {/* ============================================================ */}
         <header className="relative z-30 px-3 sm:px-10 lg:px-14 pt-4 sm:pt-6 pb-2 flex items-center justify-between gap-2 text-sm sm:text-base text-[#1C1917] dark:text-[#F5F2EB] font-sans font-semibold tracking-normal">
 
-          {/* Left Navigation Tabs: Home, Shop, About */}
-          <nav className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          {/* ---- MOBILE: Hamburger Menu Trigger (hidden on sm+) ---- */}
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="sm:hidden p-2 rounded-full bg-white/90 dark:bg-[#211E1A] border border-[#D5D9E2] dark:border-[#3D352E] shadow-xs flex items-center justify-center active:scale-95 transition-all shrink-0"
+            aria-label="Open navigation menu"
+          >
+            <Menu className="w-5 h-5 text-[#1C1917] dark:text-[#F5F2EB]" />
+          </button>
+
+          {/* ---- DESKTOP: Inline Left Navigation Tabs (hidden on mobile) ---- */}
+          <nav className="hidden sm:flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
               onClick={onGoHome || (() => window.scrollTo({ top: 0, behavior: 'smooth' }))}
               className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black dark:bg-[#D4AF37] text-white dark:text-[#141210] font-bold text-xs sm:text-sm tracking-wide shadow-xs transition-all hover:bg-neutral-800 dark:hover:bg-[#E8C450] shrink-0"
@@ -191,7 +209,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               Home
             </button>
 
-            {/* Prominent Shop Button */}
             <button
               onClick={triggerShop}
               className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/90 dark:bg-[#211E1A] hover:bg-white dark:hover:bg-[#2A2520] border border-[#D5D9E2] dark:border-[#3D352E] text-black dark:text-[#F5F2EB] font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs flex items-center gap-1 active:scale-95 cursor-pointer shrink-0"
@@ -205,12 +222,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               onClick={onBespokeClick}
               className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all shrink-0"
             >
-              About
+              Consultation
             </button>
+
+            <Link
+              href="/gold"
+              className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#F5EFE6] dark:bg-[#2A2318] hover:bg-[#EBE2D5] dark:hover:bg-[#382E1E] text-[#8C5B32] dark:text-[#D4AF37] font-bold text-xs sm:text-sm transition-all shrink-0 flex items-center gap-1 border border-[#E5D5C3] dark:border-[#574628] shadow-2xs"
+              title="We Buy Gold & Scrap Metals"
+            >
+              <Coins className="w-3.5 h-3.5 text-[#B28359] dark:text-[#D4AF37]" />
+              <span>We Buy Gold</span>
+            </Link>
           </nav>
 
-          {/* Right Navigation: Sign In Icon Button */}
-          <div className="flex items-center shrink-0">
+          {/* ---- Right: Theme Toggle + Sign In (always visible) ---- */}
+          <div className="flex items-center gap-2 shrink-0">
+            <ThemeToggle variant="toggle" />
             <button
               onClick={onOpenAuth || onBespokeClick}
               className="p-2 sm:p-2.5 rounded-full bg-white/90 dark:bg-[#211E1A] hover:bg-white dark:hover:bg-[#2A2520] border border-[#D5D9E2] dark:border-[#3D352E] text-black dark:text-[#F5F2EB] font-semibold text-xs sm:text-sm transition-all shadow-xs flex items-center justify-center active:scale-95"
@@ -221,6 +248,97 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </button>
           </div>
         </header>
+
+        {/* ============================================================ */}
+        {/* MOBILE SIDEBAR DRAWER                                         */}
+        {/* ============================================================ */}
+        {sidebarOpen && (
+          <>
+            {/* Backdrop */}
+            <div
+              className="sm:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+              onClick={() => setSidebarOpen(false)}
+            />
+
+            {/* Slide-in Sidebar Panel */}
+            <div className="sm:hidden fixed left-0 top-0 bottom-0 z-50 w-72 max-w-[85vw] bg-white dark:bg-[#1C1917] border-r border-[#EAE4DA] dark:border-[#332E2A] shadow-2xl flex flex-col animate-in slide-in-from-left duration-200">
+
+              {/* Sidebar Header */}
+              <div className="flex items-center justify-between px-5 py-4 border-b border-[#EAE4DA] dark:border-[#332E2A]">
+                <div className="flex flex-col">
+                  <span className="font-serif-luxury text-lg font-bold tracking-[0.14em] text-[#1C1917] dark:text-[#F5F2EB] uppercase">Ever After</span>
+                  <span className="text-[10px] tracking-[0.22em] text-[#8C5B32] dark:text-[#D4AF37] font-bold uppercase">Diamonds · London</span>
+                </div>
+                <button
+                  onClick={() => setSidebarOpen(false)}
+                  className="p-2 rounded-full hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] text-[#78716C] dark:text-[#A3998E] transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+
+                <button
+                  onClick={() => { setSidebarOpen(false); (onGoHome || (() => window.scrollTo({ top: 0, behavior: 'smooth' })))(); }}
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#1C1917] dark:bg-[#D4AF37] text-white dark:text-[#141210] font-bold text-sm tracking-wide text-left"
+                >
+                  <Home className="w-4 h-4 shrink-0" />
+                  <span>Home</span>
+                </button>
+
+                <button
+                  onClick={() => { setSidebarOpen(false); triggerShop(); }}
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] text-[#1C1917] dark:text-[#F5F2EB] font-semibold text-sm text-left transition-colors"
+                >
+                  <ShoppingBag className="w-4 h-4 text-[#B28359] dark:text-[#D4AF37] shrink-0" />
+                  <span>Shop Fine Jewelry</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#B28359] dark:text-[#D4AF37] ml-auto" />
+                </button>
+
+                <button
+                  onClick={() => { setSidebarOpen(false); onBespokeClick?.(); }}
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] text-[#1C1917] dark:text-[#F5F2EB] font-semibold text-sm text-left transition-colors"
+                >
+                  <Sparkles className="w-4 h-4 text-[#B28359] dark:text-[#D4AF37] shrink-0" />
+                  <span>Book Consultation</span>
+                </button>
+
+                <Link
+                  href="/gold"
+                  onClick={() => setSidebarOpen(false)}
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#F5EFE6] dark:bg-[#2A2318] hover:bg-[#EBE2D5] dark:hover:bg-[#382E1E] text-[#8C5B32] dark:text-[#D4AF37] font-bold text-sm transition-colors border border-[#E5D5C3] dark:border-[#574628]"
+                >
+                  <Coins className="w-4 h-4 shrink-0" />
+                  <span>We Buy Gold</span>
+                </Link>
+
+                <button
+                  onClick={() => { setSidebarOpen(false); (onOpenAuth || onBespokeClick)?.(); }}
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#F5F2EB] dark:hover:bg-[#24201D] text-[#1C1917] dark:text-[#F5F2EB] font-semibold text-sm text-left transition-colors"
+                >
+                  <User className="w-4 h-4 text-[#B28359] dark:text-[#D4AF37] shrink-0" />
+                  <span>Sign In</span>
+                </button>
+
+              </nav>
+
+              {/* Sidebar Footer: Theme Toggle */}
+              <div className="px-5 py-4 border-t border-[#EAE4DA] dark:border-[#332E2A] space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#78716C] dark:text-[#A3998E] uppercase tracking-wider">Appearance</span>
+                  <ThemeToggle variant="pill" />
+                </div>
+                <div className="text-[11px] text-[#A8A29E] dark:text-[#57534E] text-center">
+                  Ever After Diamonds · Hatton Garden, London
+                </div>
+              </div>
+
+            </div>
+          </>
+        )}
 
         {/* MAIN EDITORIAL STAGE */}
         <div className="relative min-h-[560px] sm:min-h-[660px] md:min-h-[740px] lg:min-h-[820px] flex flex-col justify-between px-5 sm:px-10 lg:px-14 pt-2 pb-8 sm:pb-12">
