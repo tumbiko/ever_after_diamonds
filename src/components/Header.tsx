@@ -168,7 +168,7 @@ export const Header: React.FC<HeaderProps> = ({
         )}
 
         {/* CENTER PROMINENT SEARCH BAR - WIDER CONTAINER & ENLARGED ICON */}
-        <div className="flex-1 max-w-3xl mx-1 sm:mx-4 relative">
+        <div className="hidden sm:flex flex-1 max-w-3xl mx-1 sm:mx-4 relative">
           <div className="relative flex items-center bg-[#FAF9F5] dark:bg-[#181614] border border-[#DED7CB] dark:border-[#3A332B] focus-within:border-[#B28359] dark:focus-within:border-[#D4AF37] focus-within:bg-white dark:focus-within:bg-[#211E1A] rounded-full transition-all shadow-inner px-4 py-2 sm:py-2.5">
             <Search className="w-5.5 h-5.5 text-[#B28359] dark:text-[#D4AF37] mr-2.5 shrink-0" />
             <input

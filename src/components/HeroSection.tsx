@@ -7,7 +7,8 @@ import {
   ArrowUpRight,
   Search,
   X,
-  Sparkles
+  Sparkles,
+  User
 } from 'lucide-react';
 import { Product } from '../types';
 
@@ -181,8 +182,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* TOP EDITORIAL NAVIGATION BAR */}
         <header className="relative z-30 px-3 sm:px-10 lg:px-14 pt-4 sm:pt-6 pb-2 flex items-center justify-between gap-2 text-sm sm:text-base text-[#1C1917] dark:text-[#F5F2EB] font-sans font-semibold tracking-normal">
 
-          {/* Top 4 Mobile Navigation Tabs: Home, Shop, Catalog, About */}
-          <nav className="flex items-center justify-between sm:justify-start gap-1.5 sm:gap-3 w-full sm:w-auto">
+          {/* Left Navigation Tabs: Home, Shop, About */}
+          <nav className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
               onClick={onGoHome || (() => window.scrollTo({ top: 0, behavior: 'smooth' }))}
               className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black dark:bg-[#D4AF37] text-white dark:text-[#141210] font-bold text-xs sm:text-sm tracking-wide shadow-xs transition-all hover:bg-neutral-800 dark:hover:bg-[#E8C450] shrink-0"
@@ -201,13 +202,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </button>
 
             <button
-              onClick={triggerShop}
-              className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all shrink-0"
-            >
-              Catalog
-            </button>
-
-            <button
               onClick={onBespokeClick}
               className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all shrink-0"
             >
@@ -215,25 +209,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </button>
           </nav>
 
-          {/* Right Navigation Items: Hidden on mobile (< sm), shown on sm+ */}
-          <div className="hidden sm:flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Right Navigation: Sign In Icon Button */}
+          <div className="flex items-center shrink-0">
             <button
               onClick={onOpenAuth || onBespokeClick}
-              className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all hidden sm:inline"
-              title="Sign In / Client Profile"
+              className="p-2 sm:p-2.5 rounded-full bg-white/90 dark:bg-[#211E1A] hover:bg-white dark:hover:bg-[#2A2520] border border-[#D5D9E2] dark:border-[#3D352E] text-black dark:text-[#F5F2EB] font-semibold text-xs sm:text-sm transition-all shadow-xs flex items-center justify-center active:scale-95"
+              title="Sign In / Sign Up"
+              aria-label="Sign In / Sign Up"
             >
-              Sign In
-            </button>
-
-            {/* Cart Button */}
-            <button
-              onClick={onOpenCart}
-              className="px-4 py-2 rounded-full bg-white/90 dark:bg-[#211E1A] hover:bg-white dark:hover:bg-[#2A2520] border border-[#D5D9E2] dark:border-[#3D352E] text-black dark:text-[#F5F2EB] font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs flex items-center gap-2 active:scale-95"
-            >
-              <span>Cart</span>
-              <span className="w-5 h-5 rounded-full bg-black dark:bg-[#D4AF37] text-white dark:text-[#141210] text-xs font-bold flex items-center justify-center leading-none">
-                {cartCount > 0 ? cartCount : 2}
-              </span>
+              <User className="w-4 h-4 sm:w-5 sm:h-5 text-[#B28359] dark:text-[#D4AF37]" />
             </button>
           </div>
         </header>
