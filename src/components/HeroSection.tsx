@@ -179,13 +179,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
 
         {/* TOP EDITORIAL NAVIGATION BAR */}
-        <header className="relative z-30 px-5 sm:px-10 lg:px-14 pt-5 sm:pt-6 pb-2 flex items-center justify-between text-sm sm:text-base text-[#1C1917] dark:text-[#F5F2EB] font-sans font-semibold tracking-normal">
+        <header className="relative z-30 px-3 sm:px-10 lg:px-14 pt-4 sm:pt-6 pb-2 flex items-center justify-between gap-2 text-sm sm:text-base text-[#1C1917] dark:text-[#F5F2EB] font-sans font-semibold tracking-normal">
 
-          {/* Left Navigation Tabs */}
-          <nav className="flex items-center gap-2 sm:gap-3">
+          {/* Top 4 Mobile Navigation Tabs: Home, Shop, Catalog, About */}
+          <nav className="flex items-center justify-between sm:justify-start gap-1.5 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={onGoHome || (() => window.scrollTo({ top: 0, behavior: 'smooth' }))}
-              className="px-4 py-2 rounded-full bg-black dark:bg-[#D4AF37] text-white dark:text-[#141210] font-bold text-xs sm:text-sm tracking-wide shadow-xs transition-all hover:bg-neutral-800 dark:hover:bg-[#E8C450]"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black dark:bg-[#D4AF37] text-white dark:text-[#141210] font-bold text-xs sm:text-sm tracking-wide shadow-xs transition-all hover:bg-neutral-800 dark:hover:bg-[#E8C450] shrink-0"
             >
               Home
             </button>
@@ -193,34 +193,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Prominent Shop Button */}
             <button
               onClick={triggerShop}
-              className="px-4 py-2 rounded-full bg-white/90 dark:bg-[#211E1A] hover:bg-white dark:hover:bg-[#2A2520] border border-[#D5D9E2] dark:border-[#3D352E] text-black dark:text-[#F5F2EB] font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs flex items-center gap-1.5 active:scale-95 cursor-pointer"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/90 dark:bg-[#211E1A] hover:bg-white dark:hover:bg-[#2A2520] border border-[#D5D9E2] dark:border-[#3D352E] text-black dark:text-[#F5F2EB] font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs flex items-center gap-1 active:scale-95 cursor-pointer shrink-0"
               title="Shop all fine rings and diamonds"
             >
               <span>Shop</span>
-              <ArrowUpRight className="w-4 h-4 text-[#B28359] dark:text-[#D4AF37]" />
+              <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B28359] dark:text-[#D4AF37]" />
             </button>
-
-
 
             <button
               onClick={triggerShop}
-              className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all"
+              className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all shrink-0"
             >
               Catalog
             </button>
 
             <button
               onClick={onBespokeClick}
-              className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all"
+              className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all shrink-0"
             >
               About
             </button>
-
-
           </nav>
 
-          {/* Right Navigation Items */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Right Navigation Items: Hidden on mobile (< sm), shown on sm+ */}
+          <div className="hidden sm:flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={onOpenAuth || onBespokeClick}
               className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all hidden sm:inline"
