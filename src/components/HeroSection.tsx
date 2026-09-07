@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  ArrowUpRight, 
-  Search, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  ArrowUpRight,
+  Search,
   X,
   Sparkles
 } from 'lucide-react';
@@ -154,10 +154,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <section className="relative w-full bg-[#E5D7C5] dark:bg-[#181614] p-3 sm:p-5 md:p-7 lg:p-8 select-none transition-colors">
-      
+
       {/* EDITORIAL POSTER CONTAINER */}
       <div className="relative w-full max-w-[1540px] mx-auto bg-gradient-to-b from-[#EFF1F5] via-[#E8EBF1] to-[#DFE3EB] dark:from-[#1E1B18] dark:via-[#161412] dark:to-[#0E0D0C] rounded-2xl md:rounded-[26px] shadow-[0_20px_60px_rgba(0,0,0,0.10)] overflow-hidden border border-[#D5D9E2] dark:border-[#3A332B] transition-colors">
-        
+
         {/* Geometric Linear Circles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
           <svg
@@ -180,10 +180,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* TOP EDITORIAL NAVIGATION BAR */}
         <header className="relative z-30 px-5 sm:px-10 lg:px-14 pt-5 sm:pt-6 pb-2 flex items-center justify-between text-sm sm:text-base text-[#1C1917] dark:text-[#F5F2EB] font-sans font-semibold tracking-normal">
-          
+
           {/* Left Navigation Tabs */}
           <nav className="flex items-center gap-2 sm:gap-3">
-            <button 
+            <button
               onClick={onGoHome || (() => window.scrollTo({ top: 0, behavior: 'smooth' }))}
               className="px-4 py-2 rounded-full bg-black dark:bg-[#D4AF37] text-white dark:text-[#141210] font-bold text-xs sm:text-sm tracking-wide shadow-xs transition-all hover:bg-neutral-800 dark:hover:bg-[#E8C450]"
             >
@@ -191,7 +191,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </button>
 
             {/* Prominent Shop Button */}
-            <button 
+            <button
               onClick={triggerShop}
               className="px-4 py-2 rounded-full bg-white/90 dark:bg-[#211E1A] hover:bg-white dark:hover:bg-[#2A2520] border border-[#D5D9E2] dark:border-[#3D352E] text-black dark:text-[#F5F2EB] font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs flex items-center gap-1.5 active:scale-95 cursor-pointer"
               title="Shop all fine rings and diamonds"
@@ -202,18 +202,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
 
 
-            <button 
+            <button
               onClick={triggerShop}
               className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all"
             >
               Catalog
             </button>
 
-            <button 
+            <button
               onClick={onBespokeClick}
               className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all"
             >
-              Book Appointment
+              About
             </button>
 
 
@@ -221,16 +221,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Right Navigation Items */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <button 
+            <button
               onClick={onOpenAuth || onBespokeClick}
               className="px-3.5 py-2 rounded-full hover:bg-white/80 dark:hover:bg-[#211E1A] text-[#4B5563] dark:text-[#D4CEC4] hover:text-black dark:hover:text-white font-semibold text-xs sm:text-sm transition-all hidden sm:inline"
               title="Sign In / Client Profile"
             >
               Sign In
             </button>
-            
+
             {/* Cart Button */}
-            <button 
+            <button
               onClick={onOpenCart}
               className="px-4 py-2 rounded-full bg-white/90 dark:bg-[#211E1A] hover:bg-white dark:hover:bg-[#2A2520] border border-[#D5D9E2] dark:border-[#3D352E] text-black dark:text-[#F5F2EB] font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xs flex items-center gap-2 active:scale-95"
             >
@@ -244,7 +244,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* MAIN EDITORIAL STAGE */}
         <div className="relative min-h-[560px] sm:min-h-[660px] md:min-h-[740px] lg:min-h-[820px] flex flex-col justify-between px-5 sm:px-10 lg:px-14 pt-2 pb-8 sm:pb-12">
-          
+
           {/* PROMINENT BRAND HEADLINE */}
           <div className="relative z-30 pt-4 sm:pt-6 pb-2 text-center pointer-events-none">
             <h1 className="font-serif-luxury text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[0.16em] text-[#1C1917] dark:text-[#F5F2EB] uppercase leading-none drop-shadow-xs">
@@ -288,7 +288,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             Positioned in clear focal flow beneath headline & philosophy cards
           */}
           <div className="relative z-10 my-4 sm:my-6 flex items-center justify-center pointer-events-none">
-            <div 
+            <div
               className="relative w-[320px] sm:w-[440px] md:w-[540px] lg:w-[620px] xl:w-[680px] h-[440px] sm:h-[520px] md:h-[600px] lg:h-[660px] flex items-center justify-center rounded-3xl overflow-hidden shadow-2xl border border-white/60 bg-[#DCE0E8]"
             >
               <img
@@ -310,10 +310,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           */}
           <div className="relative z-30 pt-4 sm:pt-6">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 items-end">
-              
+
               {/* CARD 1: NEW COLLECTION [ 2026 ] */}
               <div className="md:col-span-4 lg:col-span-4">
-                <div 
+                <div
                   onClick={onExploreClick}
                   className="bg-white dark:bg-[#181614] rounded-2xl p-4 sm:p-5 shadow-[0_12px_32px_rgba(0,0,0,0.08)] border border-[#E3E6EC] dark:border-[#3D352E] transition-all hover:shadow-xl cursor-pointer group"
                 >
@@ -336,7 +336,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
 
                   {/* Controls */}
-                  <div 
+                  <div
                     className="flex items-center justify-between pt-2 border-t border-[#F1F3F6] dark:border-[#2D2720]"
                     onClick={(e) => e.stopPropagation()}
                   >
@@ -369,7 +369,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* CARD 2: ADVENT [ 2025 ] */}
               <div className="md:col-span-4 lg:col-span-4">
-                <div 
+                <div
                   onClick={onExploreClick}
                   className="bg-white dark:bg-[#181614] rounded-2xl p-4 sm:p-5 shadow-[0_12px_32px_rgba(0,0,0,0.08)] border border-[#E3E6EC] dark:border-[#3D352E] transition-all hover:shadow-xl cursor-pointer group"
                 >
@@ -392,14 +392,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
 
                   {/* Pagination Dots & Navigation */}
-                  <div 
+                  <div
                     className="flex items-center justify-between pt-2 border-t border-[#F1F3F6] dark:border-[#2D2720]"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex items-center gap-1.5 text-xs text-[#9CA3AF]">
                       {adventRings.map((_, idx) => (
-                        <span 
-                          key={idx} 
+                        <span
+                          key={idx}
                           className={idx === adventIndex ? 'text-[#B28359] dark:text-[#D4AF37] font-bold' : 'text-[#D1D5DB] dark:text-[#42392F]'}
                         >
                           {idx === adventIndex ? '◆' : '◇'}
@@ -435,7 +435,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* CARD 3: THE EVER AFTER QUILTED BAND [ 18K YELLOW GOLD ] */}
               <div className="md:col-span-4 lg:col-span-4">
-                <div 
+                <div
                   onClick={handleOpenQuiltedRing}
                   className="bg-white dark:bg-[#181614] rounded-2xl p-4 sm:p-5 shadow-[0_12px_32px_rgba(0,0,0,0.08)] border border-[#E3E6EC] dark:border-[#3D352E] transition-all hover:shadow-xl cursor-pointer group"
                 >
