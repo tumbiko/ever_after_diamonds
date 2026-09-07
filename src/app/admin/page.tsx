@@ -34,7 +34,11 @@ import {
   ArrowUp,
   Percent,
   Menu,
-  X
+  X,
+  Coins,
+  Scale,
+  FileText,
+  Check
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import profileBadgeImg from '@/assets/images/ead_profile_badge_1788549227010.jpg';
